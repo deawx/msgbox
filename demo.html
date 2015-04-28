@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+<link href="msgbox.css" type="text/css" rel="stylesheet">
+<script src="jquery.js" type="text/javascript"></script>
+<script src="msgbox.js" type="text/javascript"></script>
+</head>
+<body>
+<h4>Example 1</h4>
+<div class="indent">
+	<p class="right">
+		<button onclick="$.msgbox({'message':'The selection includes process white objects. Overprinting such objects is only useful in combination with transparency effects.'});">Example 1</button>
+	</p>
+	<p>To simply call MsgBox like you would a regular alert command:</p>
+	<p>
+		$.msgbox({
+			'message':'The selection includes process white objects. Overprinting such objects is only useful in combination with transparency effects.'
+		});
+	</p>
+</div>
+
+
+<h4>Example 2</h4>
+<div class="indent">
+	<p class="right">
+		<button onclick="$.msgbox({
+			'message'	: 'Are you sure that you want to permanently delete the selected element?',
+			'type'		: 'confirm',
+			'buttons'	: [{'type' : 'yes', 'value': '是'}, {'type' : 'no', 'value': '否'}, {'type' : 'close', 'value': '取消' }],
+			'callback'	: function(result){	alert( result ); }
+		});">Example 2</button>
+	</p>
+	<p>To add a couple extra buttons with different values:</p>
+	<p>
+		$.msgbox({
+			'message'	: 'Are you sure that you want to permanently delete the selected element?',
+			'type'		: 'confirm',
+			//'buttons'	: [{'type' : 'yes', 'value': 'Yes'}, {'type' : 'no', 'value': 'No'}, {'type' : 'close', 'value': 'Cancel' }]
+			'callback'	: function(result){	alert( result); }
+		});
+	</p>
+</div>
+
+
+<h4>Example 3</h4>
+<div class="indent">
+	<p class="right">
+		<button onclick="$.msgbox({
+			'message'	: 'jQuery is a fast and concise JavaScript Library that simplifies HTML document traversing, event handling, animating, and Ajax interactions for rapid web development.',
+			'type'		: 'info'
+		});">Example 3</button>
+	</p>
+	<p>info type.</p>
+	<p>
+		$.msgbox({
+			'message'	: 'jQuery is a fast and concise JavaScript Library that simplifies HTML document traversing, event handling, animating, and Ajax interactions for rapid web development.',
+			'type'		: 'info'
+		});
+	</p>
+</div>
+
+<h4>Example 4</h4>
+<div class="indent">
+	<p class="right">
+		<button onclick="$.msgbox({
+			'message'	: 'An error 1053 ocurred while perfoming this service operation on the MySql Server service.',
+			'type'		: 'error'
+		});">Example 4</button>
+	</p>
+	<p>error type.</p>
+	<p>
+		$.msgbox({
+			'message'	: 'An error 1053 ocurred while perfoming this service operation on the MySql Server service.',
+			'type'		: 'error'
+		});
+	</p>
+</div>
+
+<h4>Example 5</h4>
+<div class="indent">
+	<p class="right">
+		<button onclick="$.msgbox({
+			'message'	: 'Insert your name below:',
+			'type'		: 'prompt',
+			'callback'	: function(result){	alert( result); }
+		});">Example 5</button>
+	</p>
+	<p>prompt type.</p>
+	<p>
+		$.msgbox({
+			'message'	: 'Insert your name below:',
+			'type'		: 'prompt',
+			'callback'	: function(result){	alert( result); }
+		});
+	</p>
+</div>
+
+<h4>Advanced Examples</h4>
+<div class="indent">
+	<p class="right">
+		<button id="advancedexample">Advanced Examples</button>
+		<script type="text/javascript">
+			$("#advancedexample").click(function() {
+			  $.msgbox({
+				'message'	: 'In order to process your request you must provide the following',
+			    'type'    	: 'prompt',
+			    'inputs'  	: [{'type' : 'text', 'label' : 'Insert your Name:', 'name' : 'user_name', 'value' : "George" }, {'type' : 'password', 'label' : 'Insert your Password:','name' : 'password'}],
+			    'buttons'	: [{'type' : 'yes', 'value' : 'OK'},{'type' : 'close', 'value' : 'Exit'}],
+			  	'callback'	: function(result){
+				  		for(var i in result)
+				  		{
+				  			alert( result[i].name + ':' + result[i].value );
+				  		}
+			  		}
+				});
+			});
+		</script>
+	</p>
+	<p>prompt type. multi inputs</p>
+	<p>
+		$("#advancedexample").click(function() {
+		  $.msgbox({
+			'message'	: 'In order to process your request you must provide the following',
+		    'type'    	: 'prompt',
+		    'inputs'  	: [{'type' : 'text', 'label' : 'Insert your Name:', 'name' : 'user_name', 'value' : "George" }, {'type' : 'password', 'label' : 'Insert your Password:','name' : 'password'}],
+		    'buttons'	: [{'type' : 'yes', 'value' : 'OK'},{'type' : 'close', 'value' : 'Exit'}],
+		  	'callback'	: function(result){
+			  		for(var i in result)
+			  		{
+			  			alert( result[i].name + ':' + result[i].value );
+			  		}
+		  		}
+			});
+		});
+	</p>
+</div>
+
+</body>
+</html>
